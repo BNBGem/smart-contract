@@ -1,0 +1,1 @@
+# BNBGem Smart Contract
