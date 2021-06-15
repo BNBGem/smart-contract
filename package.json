@@ -1,0 +1,22 @@
+{
+  "name": "smart-contract",
+  "version": "1.0.0",
+  "description": "",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BNBGem/smart-contract.git"
+  },
+  "author": "BNBGem",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BNBGem/smart-contract/issues"
+  },
+  "homepage": "https://github.com/BNBGem/smart-contract#readme"
+}
