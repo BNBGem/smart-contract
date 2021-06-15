@@ -749,8 +749,9 @@ contract BNBGem is Context, IERC20, Ownable {
     constructor () public {
         _rOwned[_msgSender()] = _rTotal;
         
-        IUniswapV2Router02 _uniswapV2Router = IUniswapV2Router02(0x05fF2B0DB69458A0750badebc4f9e13aDd608C7F);
-         // Create a uniswap pair for this new token
+        // https://bscscan.com/address/0x05ff2b0db69458a0750badebc4f9e13add608c7f#code
+        IUniswapV2Router02 _uniswapV2Router = IUniswapV2Router02(0x05fF2B0DB69458A0750badebc4f9e13aDd608C7F); // Pancake Router
+         // Create a pancake pair for this new token
         uniswapV2Pair = IUniswapV2Factory(_uniswapV2Router.factory())
             .createPair(address(this), _uniswapV2Router.WETH());
 
@@ -885,7 +886,7 @@ contract BNBGem is Context, IERC20, Ownable {
     
 
     
-     //to recieve ETH from uniswapV2Router when swaping
+     //to recieve BNB from uniswapV2Router when swaping
     receive() external payable {}
 
     function _reflectFee(uint256 rFee, uint256 tFee) private {
@@ -1149,7 +1150,7 @@ contract BNBGem is Context, IERC20, Ownable {
         _previousLiquidityFee = _liquidityFee;
         _burnFee = 0;
         _previousBurnFee = _taxFee;
-        _marketingFee = 3; // Marketing fee is to energize the development
+        _marketingFee = 3; // Marketing fee is to energize the token development and also a buyback & burn program.
         _previousmarketingFee = _marketingFee;
         inSwapAndLiquify = true;
         emit SwapAndLiquifyEnabledUpdated(true);
@@ -1158,7 +1159,7 @@ contract BNBGem is Context, IERC20, Ownable {
     function enableLowFees() external onlyOwner() {
         _taxFee = 1;
         _previousTaxFee = _taxFee;
-        _liquidityFee = 5; // Liquidity is increased to support the pool & price
+        _liquidityFee = 5; // Liquidity fee increased to support the pool & price
         _previousLiquidityFee = _liquidityFee;
         _burnFee = 0;
         _previousBurnFee = _taxFee;
