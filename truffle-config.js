@@ -28,11 +28,11 @@
    providerOrUrl: process.env.PROVIDER_BINANCE_TESTNET 
  })
 
- // Binance Mainnet Provider
-//  const binanceMainnetProvider = new HDWalletProvider({
-//   privateKeys: [process.env.SECRET_WALLET_BINANCE_MAINNET_DEPLOYER],
-//   providerOrUrl: process.env.PROVIDER_BINANCE_MAINNET
-// })
+//  Binance Mainnet Provider
+ const binanceMainnetProvider = new HDWalletProvider({
+  privateKeys: [process.env.SECRET_WALLET_BINANCE_MAINNET_DEPLOYER],
+  providerOrUrl: process.env.PROVIDER_BINANCE_MAINNET
+})
  
  // Ropsten Provider
  const ropstenProvider = new HDWalletProvider({
@@ -107,15 +107,16 @@
         networkCheckTimeout: 1000000,
         skipDryRun: true     // Skip dry run before migrations? (default: false for public nets )
      },
-    //  binanceMainnet: {
-    //     provider: () => binanceMainnetProvider,
-    //     network_id: 56,       // Ropsten's id
-    //     // gasPrice: 49000000,
-    //     gas: 1203549,        // Ropsten has a lower block limit than mainnet
-    //     confirmations: 2,    // # of confs to wait between deployments. (default: 0)
-    //     timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
-    //     skipDryRun: true     // Skip dry run before migrations? (default: false for public nets )
-    //  },
+     binanceMainnet: {
+        provider: () => binanceMainnetProvider,
+        network_id: 56,       // Ropsten's id
+        // gasPrice: 49000000,
+        gas: 1203549,        // Ropsten has a lower block limit than mainnet
+        confirmations: 5,    // # of confs to wait between deployments. (default: 0)
+        timeoutBlocks: 1000,  // # of blocks before a deployment times out  (minimum/default: 50)
+        networkCheckTimeout: 1000000,
+        skipDryRun: true     // Skip dry run before migrations? (default: false for public nets )
+     },
      // Useful for private networks
      // private: {
      // provider: () => new HDWalletProvider(mnemonic, `https://network.io`),
